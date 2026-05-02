@@ -1,0 +1,461 @@
+<!doctype html>
+<html lang="sk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>QuestSpace – Namakaný deň 2026</title>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reset.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <style>
+    :root {
+      --qs-bg: #000a16;
+      --qs-bg2: #021226;
+      --qs-text: #ffffff;
+      --qs-grad: linear-gradient(90deg, #b22a72 0%, #3756e3 100%);
+      --qs-pink: #b22a72;
+      --qs-blue: #3756e3;
+    }
+
+    .reveal-viewport,
+    .reveal-viewport body {
+      background: var(--qs-bg);
+    }
+
+    .reveal {
+      font-family: 'Manrope', sans-serif;
+      color: var(--qs-text);
+      background: var(--qs-bg);
+    }
+
+    .reveal .slides {
+      background: var(--qs-bg);
+    }
+
+    .reveal .slides section {
+      background: var(--qs-bg);
+      padding: 20px 50px;
+    }
+
+    .reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+      font-family: 'Manrope', sans-serif;
+      color: var(--qs-text);
+      text-transform: none;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+
+    .reveal h1 { font-size: 1.9em; font-weight: 800; }
+    .reveal h2 { font-size: 1.35em; font-weight: 700; margin-bottom: 0.5em; }
+    .reveal h3 { font-size: 1em; font-weight: 600; }
+    .reveal p  { font-size: 0.75em; line-height: 1.7; }
+
+    .reveal ul, .reveal ol { text-align: left; }
+    .reveal li { font-size: 0.72em; line-height: 1.6; margin-bottom: 6px; }
+
+    /* ── Gradient utility ── */
+    .grad {
+      background: var(--qs-grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ── Logo ── */
+    .logo {
+      height: 52px;
+      margin-bottom: 18px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ── Tag chips ── */
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin: 20px 0;
+    }
+    .tag {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.14);
+      padding: 7px 16px;
+      border-radius: 6px;
+      font-size: 0.62em;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    /* ── Two-column grid ── */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 24px;
+      text-align: left;
+    }
+
+    /* ── Card ── */
+    .card {
+      background: var(--qs-bg2);
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 12px;
+      padding: 22px 24px;
+    }
+    .card h3 {
+      background: var(--qs-grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-size: 0.85em !important;
+      margin: 0 0 10px;
+    }
+    .card p, .card li {
+      font-size: 0.65em;
+      opacity: 0.82;
+      margin: 0;
+      line-height: 1.65;
+    }
+
+    /* ── Price cards ── */
+    .price-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      max-width: 680px;
+      margin: 28px auto 0;
+    }
+    .price-card {
+      background: var(--qs-bg2);
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 14px;
+      padding: 28px 20px;
+      text-align: center;
+    }
+    .price-card .label {
+      font-size: 0.6em;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      opacity: 0.6;
+      margin-bottom: 12px;
+    }
+    .price-card .amount {
+      font-size: 2.4em;
+      font-weight: 800;
+      background: var(--qs-grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+    }
+    .price-card .per {
+      font-size: 0.52em;
+      opacity: 0.5;
+      margin: 4px 0 14px;
+    }
+    .price-card .note {
+      font-size: 0.58em;
+      opacity: 0.75;
+      line-height: 1.5;
+    }
+
+    /* ── Seeing Spaces ── */
+    .seeing-img {
+      max-height: 50vh;
+      border-radius: 8px;
+      display: block;
+      margin: 16px auto 0;
+    }
+
+    /* ── Compare grid ── */
+    .compare-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-top: 22px;
+      text-align: left;
+    }
+    .compare-box {
+      background: var(--qs-bg2);
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 10px;
+      padding: 18px 20px;
+    }
+    .compare-box.qs-box {
+      border-color: rgba(178,42,114,0.45);
+      background: rgba(178,42,114,0.07);
+    }
+    .compare-box h4 {
+      font-size: 0.75em;
+      margin: 0 0 8px;
+      font-weight: 700;
+    }
+    .compare-box p {
+      font-size: 0.62em;
+      opacity: 0.8;
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    /* ── Vision items ── */
+    .vision-list {
+      max-width: 780px;
+      margin: 20px auto;
+    }
+    .vision-item {
+      background: linear-gradient(135deg, rgba(178,42,114,0.12), rgba(55,86,227,0.12));
+      border: 1px solid rgba(178,42,114,0.25);
+      border-radius: 10px;
+      padding: 14px 20px;
+      margin-bottom: 14px;
+      text-align: left;
+    }
+    .vision-item h4 {
+      font-size: 0.72em;
+      font-weight: 700;
+      margin: 0 0 5px;
+      color: #fff;
+    }
+    .vision-item p {
+      font-size: 0.62em;
+      margin: 0;
+      opacity: 0.8;
+      line-height: 1.55;
+    }
+
+    /* ── Slide: intro background ── */
+    .title-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('images/background.png');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.08;
+      pointer-events: none;
+    }
+
+    /* ── Divider bar ── */
+    .grad-bar {
+      height: 3px;
+      background: var(--qs-grad);
+      border-radius: 2px;
+      margin: 14px auto 20px;
+      width: 80px;
+    }
+
+    /* ── Subtitle muted ── */
+    .muted {
+      font-size: 0.6em;
+      opacity: 0.55;
+    }
+
+    /* ── CTA link ── */
+    .cta-links {
+      font-size: 0.7em;
+      line-height: 2;
+      margin-top: 20px;
+    }
+    .cta-links strong {
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <!-- ── SLIDE 1: Title ── -->
+    <section>
+      <div class="title-bg"></div>
+      <img src="images/logo.png" class="logo" alt="QuestSpace">
+      <h1>Hackni svoje nápady,<br><span class="grad">premeň ich na realitu.</span></h1>
+      <div class="grad-bar"></div>
+      <p class="muted">Namakaný deň 2026 &nbsp;·&nbsp; 4. mája, 10:15 &nbsp;·&nbsp; Dávid Jopek</p>
+    </section>
+
+    <!-- ── SLIDE 2: Čo je QuestSpace? ── -->
+    <section>
+      <h2>Čo je <span class="grad">QuestSpace</span>?</h2>
+      <div class="grad-bar"></div>
+      <p style="max-width:780px; margin:0 auto;">
+        QuestSpace je Košický <strong>hackerspace a co-working</strong>, v ktorom kultivujeme komunitu ľudí so spoločnými záujmami ako sú počítače, technika, veda a umenie. Ponúka inkluzívny priestor kde sa títo ľudia môžu stretávať, zdieľať informácie, učiť sa a spolupracovať.
+      </p>
+      <div class="tags" style="margin-top:28px;">
+        <span class="tag">🤝 Komunita</span>
+        <span class="tag">💻 Technológie</span>
+        <span class="tag">🔬 Veda</span>
+        <span class="tag">🎨 Umenie</span>
+        <span class="tag">🔧 Tvorba</span>
+        <span class="tag">🥽 XR &amp; AI</span>
+      </div>
+    </section>
+
+    <!-- ── SLIDE 3: Čo je hackerspace? ── -->
+    <section>
+      <h2>Čo je <span class="grad">hackerspace</span>?</h2>
+      <div class="grad-bar"></div>
+      <p style="max-width:800px; margin:0 auto 16px;">
+        Hackerspace je priestor kde môžeš prísť <strong>pracovať na svojich nápadoch</strong>, tvoriť a participovať na zaujímavých projektoch — v spojení s učením sa nových vecí a zdieľaním poznatkov medzi sebou.
+      </p>
+      <p style="max-width:800px; margin:0 auto; opacity:0.75;">
+        Zameranie projektov je limitované iba ľudskou fantáziou, prostriedkami a nástrojmi dostupnými v priestore. Cieľom pobytu v hackerspace je <em>zlepšenie a rozšírenie svojich zručností</em> v akomkoľvek zmysle.
+      </p>
+    </section>
+
+    <!-- ── SLIDE 4: Meetupy & Workshopy ── -->
+    <section>
+      <h2>Čo sa u nás <span class="grad">deje</span>?</h2>
+      <div class="two-col">
+        <div class="card">
+          <h3>🗓 Meetupy</h3>
+          <p>V komunite sa stretávajú ľudia z rôznych životných ciest. Programátori v JavaScripte či Ruste, Linuxáci, ženy v IT, prispievatelia do Wikipedie, priaznivci XR a AR — každý nájde svoju skupinu.</p>
+        </div>
+        <div class="card">
+          <h3>🛠 Workshopy</h3>
+          <p>Programovanie, elektronika, kryptografia, umelá inteligencia, kvantová informatika alebo kreatívne umenie. Ideálne na učenie nových vecí — za pár hodín si rozšíriš zručnosti a odchádzaš s hotovým výsledkom.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── SLIDE 5: Eventy & Paralelná Polis ── -->
+    <section>
+      <div class="two-col" style="margin-top:30px;">
+        <div class="card">
+          <h3>🎉 Eventy</h3>
+          <p>Prednášky a hackathony na rôzne témy, Pizza &amp; Code, BuildberryPi a mnoho ďalšieho. Podujatia organizované komunitou pre komunitu — sme zvedavé bytosti, ktoré sa chcú neustále učiť.</p>
+        </div>
+        <div class="card">
+          <h3>🏢 Paralelná Polis Košice</h3>
+          <p>QuestSpace sa nachádza priamo vedľa Paralelnej Polis Košice — coworking je hlavný priestor, QuestSpace je hackerspace hneď vedľa. Zdieľame komunitu, podujatia aj infraštruktúru.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── SLIDE 6: Vybavenie ── -->
+    <section>
+      <h2>Čo môžeš <span class="grad">vytvoriť</span>?</h2>
+      <p class="muted" style="margin-bottom:18px;">Vybavenie dostupné všetkým členom QuestSpace</p>
+      <div class="tags">
+        <span class="tag">🖨 3D tlačiarne</span>
+        <span class="tag">⚡ Elektronika</span>
+        <span class="tag">📡 Senzory</span>
+        <span class="tag">✂️ Rezačky</span>
+        <span class="tag">🥽 XR headsety</span>
+        <span class="tag">🤝 Veľký kolaboratívny stôl</span>
+        <span class="tag">🔥 Pájkovačky</span>
+        <span class="tag">🔧 Náradie</span>
+        <span class="tag">🏭 Dielňa</span>
+      </div>
+      <p class="muted" style="margin-top:20px;">Vybavenie rastie spolu s komunitou →</p>
+    </section>
+
+    <!-- ── SLIDE 7: Členstvo & ceny ── -->
+    <section>
+      <h2>Členstvo a <span class="grad">ceny</span></h2>
+      <p class="muted">Zakúpiš na <strong style="color:#fff;">clenstvo.ppke.sk</strong> · dostupné aj jednodňové vstupy (10 €)</p>
+      <div class="price-row">
+        <div class="price-card">
+          <div class="label">Mesačné členstvo</div>
+          <div class="amount">80 €</div>
+          <div class="per">/ mesiac</div>
+          <div class="note">Plný prístup do QuestSpace aj Paralelnej Polis Košice.</div>
+        </div>
+        <div class="price-card">
+          <div class="label">Študentské členstvo</div>
+          <div class="amount">40 €</div>
+          <div class="per">/ mesiac</div>
+          <div class="note">Pre žiakov ZŠ, SŠ a VŠ. Rovnaké výhody ako mesačné.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── SLIDE 8: Seeing Spaces – Bret Victor ── -->
+    <section>
+      <h2><span class="grad">Seeing Spaces</span></h2>
+      <p class="muted" style="margin-bottom:10px;">Vízia Breta Victora — základ nášho smerovania</p>
+      <img src="images/seeing-spaces.jpg" class="seeing-img" alt="Seeing Spaces by Bret Victor">
+      <p class="muted" style="font-size:0.45em; margin-top:8px;">© Bret Victor — worrydream.com/SeeingSpaces</p>
+    </section>
+
+    <!-- ── SLIDE 9: Seeing Spaces & QuestSpace ── -->
+    <section>
+      <h2>Seeing Spaces &amp; <span class="grad">QuestSpace</span></h2>
+      <p style="max-width:760px; margin:0 auto 10px; font-size:0.68em; opacity:0.85; line-height:1.65;">
+        Seeing Spaces: priestor, kde ľudia stavajú hardvér obklopení obrazovkami a nástrojmi, ktoré im pomáhajú <strong>porozumieť tomu, čo stavajú</strong> — v reálnom čase, zo všetkých uhlov pohľadu.
+      </p>
+      <div class="compare-grid" style="max-width:760px; margin:0 auto;">
+        <div class="compare-box">
+          <h4>📺 Seeing Spaces (originál)</h4>
+          <p>Fyzické monitory a „control center" štýlový priestor — všade obrazovky, dáta zo senzorov a vizualizácie procesov. Pomáha pochopiť fungovanie stavebného projektu v každom momente.</p>
+        </div>
+        <div class="compare-box qs-box">
+          <h4>🥽 Naša vízia v QuestSpace</h4>
+          <p>XR headsety a AI okuliare <em>nahrádzajú fyzické monitory</em>. Pohyblivé, interaktívne 3D rozhrania presne tam, kde ich potrebuješ — bez káblov, bez obmedzenia fyzickým displejom.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── SLIDE 10: Budúcnosť XR + AI ── -->
+    <section>
+      <h2>Budúcnosť: <span class="grad">XR + AI</span></h2>
+      <div class="vision-list">
+        <div class="vision-item">
+          <h4>🥽 Digital overlay namiesto fyzických monitorov</h4>
+          <p>XR headsety a AI okuliare premietajú informácie priamo do priestoru okolo projektu — schémy, meracie dáta, dokumentácia, všetko presne tam kde to potrebuješ vidieť.</p>
+        </div>
+        <div class="vision-item">
+          <h4>📐 Pohyblivé, interaktívne 3D rozhrania</h4>
+          <p>Každé okno môžeš presunúť, zmeniť jeho veľkosť a obsah gestom alebo hlasom. Rozhrania sledujú teba a tvoj projekt — nie naopak.</p>
+        </div>
+        <div class="vision-item">
+          <h4>🤖 AI asistent v tvojom zornom poli</h4>
+          <p>AI vidí, čo vidíš ty — pomáha debugovať obvody, navrhovať zmeny, vysvetľovať chyby priamo v kontexte fyzického projektu na tvojom stole.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── SLIDE 11: Záver / CTA ── -->
+    <section>
+      <div class="title-bg"></div>
+      <img src="images/logo.png" class="logo" alt="QuestSpace">
+      <h1>Poď do <span class="grad">QuestSpace</span>!</h1>
+      <div class="grad-bar"></div>
+      <div class="cta-links">
+        🌐 &nbsp;<strong>questspace.sk</strong><br>
+        💳 &nbsp;Členstvo: <strong>clenstvo.ppke.sk</strong><br>
+        📍 &nbsp;Košice, vedľa Paralelnej Polis Košice
+      </div>
+      <div class="tags" style="margin-top:28px;">
+        <span class="tag">🤝 Komunita</span>
+        <span class="tag">🔧 Vybavenie</span>
+        <span class="tag">🥽 XR</span>
+        <span class="tag">🤖 AI</span>
+        <span class="tag">🚀 Projekty</span>
+      </div>
+      <p class="muted" style="margin-top:28px; font-size:0.5em;">Namakaný deň 2026 · Dávid Jopek</p>
+    </section>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    transition: 'fade',
+    transitionSpeed: 'fast',
+    backgroundTransition: 'fade',
+    controls: true,
+    controlsTutorial: false,
+    progress: true,
+    center: true,
+    width: 1280,
+    height: 720,
+    margin: 0.04,
+    plugins: []
+  });
+</script>
+</body>
+</html>
